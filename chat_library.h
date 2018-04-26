@@ -17,6 +17,30 @@
 #include <netinet/in.h>
 
 
+/* DATA STRUCTURES */
+
+typedef enum{
+  CONNECT,
+  DISCONNECT,
+  SET_USERNAME,
+  PUBLIC_MESSAGE,
+  TOO_FULL,
+  USERNAME_ERROR,
+  SUCCESS,
+  ERROR
+} msg_type;					// enumeration for different types of messages the server can send out
+
+typedef struct{
+  msg_type type;
+  char username[21];
+  char data[256];
+} message;						// structure for a message
+
+typedef struct connection_info{
+  int socket;
+  struct sockaddr_in address;
+  char username[20];
+} connection_info;			// structure to hold client connection information
 
 
 /* FUNCTION PROTOTYPES */
